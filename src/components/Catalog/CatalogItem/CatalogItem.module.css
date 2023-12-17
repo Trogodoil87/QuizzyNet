@@ -1,49 +1,37 @@
-.catalog-item {
+.sectionItem {
     border: 1px solid #ddd;
-    padding: 16px;
+    padding: 10px 10px;
     transition: border-color 0.3s;
     width: 300px;
     height: 250px;
     flex: 0 0 auto;
     /* Allow the item to grow or shrink as needed */
     box-sizing: border-box;
-}
-
-.catalog-item-img {
-    max-width: 20%;
-    max-height: 20%;
-}
-.catalog-item-title,
-.catalog-item-link,
-.catalog-item-author,
-.catalog-item-description {
     overflow: hidden;
-    /* Prevent text overflow */
     text-overflow: ellipsis;
-    /* Add ellipsis (...) to indicate text truncation */
     white-space: nowrap;
-    /* Prevent text from wrapping to the next line */
-}
-
-/* Change border color on hover */
-.catalog-item:hover {
-    border-color: #ff0000;
-    /* Red color on hover */
 
 }
 
-/* Styles for anchor tags in CatalogItem */
-.catalog-item-link {
-    color: #333;
-    /* Default color */
-    text-decoration: none;
-    transition: color 0.3s;
-    /* Add a smooth transition effect on text color */
-    margin-left: 10px;
+.sectionItem:hover {
+    background-color: rgba(235, 133, 9, 0.11);
+    transition: background-color 1s;
 }
 
-/* Change text color on anchor tag hover */
-.catalog-item-link:hover {
-    color: #ff0000;
-    /* Red color on hover */
+.catalogItemTxt {
+    margin: 10px 10px;
+}
+
+.catalogItemTxt:hover {
+    color: red;
+    transition: color 1s;
+    font-size: large;
+    transition: font-size 3s;
+
+}
+
+.imageSize {
+    max-width: 20%;
+    max-height: 5%;
+    position: center;
 }

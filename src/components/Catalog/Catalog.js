@@ -14,6 +14,14 @@ export const Catalog = () => {
                     <CatalogItem />
                     <CatalogItem />
                     <CatalogItem />
+                    <CatalogItem />
+                    <CatalogItem />
+                    <CatalogItem />
+                    <CatalogItem />
+                    <CatalogItem />
+                    {/* <div>
+                        <h1>Nobody posted a Quizz yet! </h1>
+                    </div> */}
                 </div>
             </div >
         </section >
