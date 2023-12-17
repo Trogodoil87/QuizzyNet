@@ -3,8 +3,7 @@ import { Catalog } from "./components/Catalog/Catalog";
 import { Subscribe } from "./components/Subscribe/Subscribe";
 import { Footer } from "./components/Footer/Footer";
 import { Header } from "./components/Header/Header";
-import { QuizzyList } from "./components/QuizzyList/QuizzyList";
-import { AboutUs } from "./components/AboutUs/AboutUs";
+import { AboutUs } from "./components/About/AboutUs";
 
 
 function App() {
@@ -49,8 +48,8 @@ function App() {
                 </div>
 
             </section> */}
-{/*     
-            <section id="works" className="works">
+    
+            {/* <section id="works" className="works">
                 <div className="container">
                     <div className="section-header">
                         <h2>how it works</h2>
@@ -106,9 +105,9 @@ function App() {
                 </div>
 
             </section> */}
-            <AboutUs />
-            {/* <Subscribe /> */}
-            {/* <Catalog /> */}
+            {/* <AboutUs />
+            <Subscribe /> */}
+            <Catalog />
             <Footer />
         </>
     );

@@ -1,0 +1,16 @@
+footer span {
+    color: red;
+}
+
+footer a {
+    color: rgb(15, 193, 224);
+}
+
+footer a:hover,
+footer span:hover {
+    color: Blue;
+}
+
+footer a {
+    text-decoration: none;
+}

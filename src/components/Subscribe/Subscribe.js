@@ -1,4 +1,4 @@
-
+import "./Subscribe.module.css"
 
 export const Subscribe = () => {
     return (
