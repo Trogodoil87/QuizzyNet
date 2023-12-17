@@ -14,6 +14,7 @@ import { Register } from "./components/Register/Register";
 import { Create } from "./components/Create/Create";
 import { Edit } from "./components/Edit/Edit";
 import { Home } from "./components/Home/Home";
+import { Logout } from "./components/Logout/Logout";
 
 function App() {
     const [quizzes, setQuizzes] = useState([]);
@@ -25,7 +26,7 @@ function App() {
             .then(result => {
                 setQuizzes(result);
             })
-            console.log(user)
+        console.log(user)
     }, []);
 
     const userLogin = (userData) => {
@@ -33,8 +34,13 @@ function App() {
         localStorage.setItem('token', userData.accessToken);
         setUser(userData);
     }
+
+    const userLogout = () => {
+        setUser({});
+    }
+    
     return (
-        <QuizzContext.Provider value={{ quizzes }}>
+        <QuizzContext.Provider value={{ quizzes, userLogout, user }}>
             <Header user={user} />
             <Routes>
                 <Route path='/' element={<Home />} />
@@ -46,6 +52,7 @@ function App() {
                 <Route path='/edit/:quizId' element={<Edit />} />
                 <Route path='/edit/:quizId' element={<Edit />} />
                 <Route path='/about' element={<AboutUs />} />
+                <Route path='/logout' element={<Logout />} />
             </Routes >
             <Footer user={user} />
         </QuizzContext.Provider>

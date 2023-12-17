@@ -23,3 +23,14 @@ export const login = async (email, password) => {
 
     return response;
 }
+
+export const logout = async (token) => {
+    const response = await fetch(`${baseUrl}/logout`, {
+        method: 'GET',
+        headers: {
+            'X-Authorization': token
+        }
+    });
+
+    return response;
+}
