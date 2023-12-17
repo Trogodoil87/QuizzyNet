@@ -1,4 +1,8 @@
 import { Routes, Route } from "react-router-dom";
+import { useState, useEffect } from "react";
+
+import * as quizzService from "./components/services/quizzServices";
+import { QuizzContext } from "./components/context/QuizzContext";
 
 import { Catalog } from "./components/Catalog/Catalog";
 import { Footer } from "./components/Footer/Footer";
@@ -12,21 +16,39 @@ import { Edit } from "./components/Edit/Edit";
 import { Home } from "./components/Home/Home";
 
 function App() {
+    const [quizzes, setQuizzes] = useState([]);
+    const [user, setUser] = useState({});
+
+    useEffect(() => {
+        quizzService.getAll()
+            .then(res => res.json())
+            .then(result => {
+                setQuizzes(result);
+            })
+            console.log(user)
+    }, []);
+
+    const userLogin = (userData) => {
+        console.log(userData);
+        localStorage.setItem('token', userData.accessToken);
+        setUser(userData);
+    }
     return (
-        <>
-            <Header />
+        <QuizzContext.Provider value={{ quizzes }}>
+            <Header user={user} />
             <Routes>
                 <Route path='/' element={<Home />} />
                 <Route path='/search' element={<Search />} />
                 <Route path='/catalog' element={<Catalog />} />
-                <Route path='/login' element={<Login />} />
+                <Route path='/login' element={<Login userLogin={userLogin} />} />
                 <Route path='/register' element={<Register />} />
                 <Route path='/create' element={<Create />} />
                 <Route path='/edit/:quizId' element={<Edit />} />
+                <Route path='/edit/:quizId' element={<Edit />} />
                 <Route path='/about' element={<AboutUs />} />
             </Routes >
-            <Footer />
-        </>
+            <Footer user={user} />
+        </QuizzContext.Provider>
 
     );
 }

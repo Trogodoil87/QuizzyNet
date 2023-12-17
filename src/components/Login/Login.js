@@ -1,9 +1,26 @@
 import { Link } from "react-router-dom";
 
-export const Login = () => {
+import * as authService from "../services/authService";
+
+export const Login = ({
+    userLogin,
+}) => {
+    const onSubmitHandler = (e) => {
+        e.preventDefault();
+
+        const formData = new FormData(e.target);
+        const email = formData.get('email');
+        const password = formData.get('password');
+
+        authService.login(email, password)
+            .then(res => res.json())
+            .then(authData => {
+                userLogin(authData);
+            })
+    }
     return (
         <section id="login">
-            <form>
+            <form onSubmit={onSubmitHandler}>
                 <div className="container">
                     <h1>Login</h1>
                     <label htmlFor="email">Email:</label>

@@ -1,7 +1,11 @@
+import { useContext } from "react";
+
 import { CatalogItem } from "./CatalogItem/CatalogItem";
 import styles from "./Catalog.module.css";
+import { QuizzContext } from "../context/QuizzContext";
 
 export const Catalog = () => {
+    const { quizzes } = useContext(QuizzContext);
     return (
         <section className={styles['section-catalog']}>
             < div className={styles['section-catalog-container']} >
@@ -10,18 +14,11 @@ export const Catalog = () => {
                     <p>Always up to date with our latest Quizz Test </p>
                 </div>
                 <div className={styles['section-content']}>
-                    <CatalogItem />
-                    <CatalogItem />
-                    <CatalogItem />
-                    <CatalogItem />
-                    <CatalogItem />
-                    <CatalogItem />
-                    <CatalogItem />
-                    <CatalogItem />
-                    <CatalogItem />
-                    {/* <div>
-                        <h1>Nobody posted a Quizz yet! </h1>
-                    </div> */}
+                    {quizzes.id
+                        ? quizzes.map(quizz => <Catalog key={quizz._id} quizz={quizz} />)
+                        : <div>
+                            <h1>Nobody posted a Quizz yet! </h1>
+                        </div>}
                 </div>
             </div >
         </section >
