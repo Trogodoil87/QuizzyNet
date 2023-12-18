@@ -20,7 +20,7 @@ export const CatalogItem = ({
 
 
     return (
-        <section id="catalog-item-section" className={styles.sectionItem}>
+        <section className={styles.section}>
             <div>
                 <img className={styles.imageSize} src={quizz.imageUrl} alt="quizz item" />
             </div>

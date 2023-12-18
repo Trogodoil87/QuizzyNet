@@ -22,6 +22,13 @@
     margin: 10px 10px;
 }
 
+.section {
+    display: ruby;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
 .catalogItemTxt:hover {
     color: red;
     transition: color 1s;

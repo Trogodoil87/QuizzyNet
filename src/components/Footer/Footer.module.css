@@ -13,6 +13,7 @@
     padding: 10px 12px;
     background-color: white;
     color: rgba(105, 53, 4, 0.815);
+    background: transparent;
 }
 
 .linkColour:hover {

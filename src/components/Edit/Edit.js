@@ -2,6 +2,7 @@ import { useState, useEffect, useContext } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 
 import * as quizzService from "../services/quizzServices";
+import styles from './Edit.module.css';
 import { QuizzContext } from "../context/QuizzContext";
 
 export const Edit = ({
@@ -56,7 +57,7 @@ export const Edit = ({
 
 
     return (
-        <section id="edit-page">
+        <section className={styles.section}>
             <form id="edit" onSubmit={onSubmitHandler}>
                 <div className="container">
 

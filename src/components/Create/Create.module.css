@@ -17,3 +17,20 @@
     background-color: red;
     color: white;
 }
+
+.section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.labelStyle {
+    color: red;
+    background-color: white;
+    border-radius: 1rem;
+}
+
+.headingStyle {
+    margin: 50px 250px;
+}

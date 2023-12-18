@@ -11,3 +11,16 @@
     background-color: red;
     color: white;
 }
+
+.section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.likesStyle {
+    background-color: white;
+    border-radius: 1rem;
+
+}

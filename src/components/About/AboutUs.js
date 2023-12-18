@@ -1,8 +1,8 @@
-
+import styles from './AboutUs.module.css';
 
 export const AboutUs = () => {
     return (
-        <section id="about">
+        <section className={styles.section}>
             <div className="container">
                 <div className="about-title">
                     <div className="about-container">

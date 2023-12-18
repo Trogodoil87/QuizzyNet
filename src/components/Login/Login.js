@@ -1,6 +1,7 @@
 import { Link, useNavigate } from "react-router-dom";
 
 import * as authService from "../services/authService";
+import styles from './Login.module.css';
 
 export const Login = ({
     userLogin,
@@ -26,21 +27,28 @@ export const Login = ({
             })
     }
     return (
-        <section id="login">
-            <form onSubmit={onSubmitHandler}>
-                <div className="container">
+        <section className={styles.section}>
+            <div className="wrapper">
+                <form onSubmit={onSubmitHandler}>
                     <h1>Login</h1>
-                    <label htmlFor="email">Email:</label>
-                    <input  type="email" id="email" name="email" placeholder="Sokka@gmail.com" />
-                    {/* to do set input email to autoComplete="off" */}
-                    <label htmlFor="login-pass">Password:</label>
-                    <input type="password" id="login-password" name="password" />
-                    <input type="submit" className="btn submit" value="Login" />
-                    <p>
-                        <span>Not a memeber? <Link to="/register">Click Here</Link></span>
-                    </p>
-                </div>
-            </form>
+                    <div className="input-box">
+                        <input type="text" placeholder="Email" required  name="email" autoComplete="on"/>
+                        <i class='bx bxs-user-circle'></i>
+                    </div>
+                    <div className="input-box">
+                        <input type="password" placeholder="Password" required name="password" autoComplete="on"/>
+                        <i class='bx bxs-lock-alt' ></i>
+                    </div>
+
+                    <button type="submit" className="btn">Login</button>
+                    <div className="register-link">
+                        <p>
+                            Don't have an account?
+                            <Link to="/register">Register</Link>
+                        </p>
+                    </div>
+                </form>
+            </div>
         </section>
     );
 }

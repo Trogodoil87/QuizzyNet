@@ -1,4 +1,5 @@
 .globalIMG {
-    background-image: url('../public/assets/wave.jpg');
+    background: url('../public/assets/wave.jpg') no-repeat;
     background-size: cover;
+    background-position: center;
 }

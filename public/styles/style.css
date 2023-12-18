@@ -1,3 +1,6 @@
+@import "./login.css";
+@import "./register.css";
+
 footer a {
     text-decoration: none;
     color: rgba(105, 53, 4, 0.815);
@@ -40,8 +43,6 @@ header span {
     padding-top: 7em;
     justify-content: right;
     padding-left: 15px;
-    position: relative;
-    box-sizing: border-box;
     text-align: center;
 }
 
@@ -103,3 +104,5 @@ header span {
    color: black;
 
 }
+
+

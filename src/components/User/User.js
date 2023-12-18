@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 
 import * as authService from "../services/authService";
+import styles from './User.module.css';
 
 export const User = () => {
     const [userProfile, setUserProfile] = useState({});
@@ -15,7 +16,7 @@ export const User = () => {
     }, []);
 
     return (
-        <section id="user-profile">
+        <section className={styles.section}>
             <div>
                 <div>
                     <h1>{userProfile._email}</h1>

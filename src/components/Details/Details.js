@@ -40,7 +40,7 @@ export const Details = ({
         navigate(`/delete/${quizzId}`)
     }
     return (
-        <section id="details-page">
+        <section className={styles.section}>
             <h1>{quizz.category}</h1>
             <div className="info-section">
 
@@ -60,7 +60,7 @@ export const Details = ({
             </div>
 
             <article className="add-like">
-                <label>Likes: 0</label>
+                <label className={styles.likesStyle}>Likes: 0</label>
                 {user._id &&
                     <>
                         <input className={styles.detailsButtonEffect} type="button" value="Like" />
