@@ -44,3 +44,16 @@ header span {
     box-sizing: border-box;
     text-align: center;
 }
+
+#create {
+    color: black;
+    margin: 30px 20px;
+}
+
+#create-page {
+    display: flex;
+    padding: 20px 20px;
+    position: relative;
+    box-sizing: border-box;
+    justify-content: center;
+}

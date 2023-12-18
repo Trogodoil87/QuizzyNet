@@ -1,10 +1,12 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import * as authService from "../services/authService";
 
 export const Login = ({
     userLogin,
 }) => {
+    const navigate = useNavigate();
+
     const onSubmitHandler = (e) => {
         e.preventDefault();
 
@@ -16,6 +18,7 @@ export const Login = ({
             .then(res => res.json())
             .then(authData => {
                 userLogin(authData);
+                navigate('/');
             })
     }
     return (

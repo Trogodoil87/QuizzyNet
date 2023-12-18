@@ -1,0 +1,6 @@
+.inputHoverColor:focus {
+    color: #080000;
+    transition: color 0.3s;
+}
+
+

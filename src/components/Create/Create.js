@@ -1,40 +1,80 @@
+import { useNavigate } from "react-router-dom";
+import { useContext } from "react";
 
+import styles from "./Create.module.css"
+import { QuizzContext } from "../context/QuizzContext";
+import * as quizzService from "../services/quizzServices";
 
-export const Create = () => {
+export const Create = ({
+    onCreateQuizz,
+}) => {
+    const { user } = useContext(QuizzContext);
+    const navigate = useNavigate();
+
+    const onSubmitHandler = (e) => {
+        e.preventDefault();
+        const formData = new FormData(e.target);
+
+        const category = formData.get('category');
+        const question = formData.get('question');
+        const answerA = formData.get('answer-a');
+        const answerB = formData.get('answer-b');
+        const answerC = formData.get('answer-c');
+        const answerD = formData.get('answer-d');
+        const correctAnswer = formData.get('correct-answer');
+        const imageUrl = formData.get('imageUrl');
+        const description = formData.get('description');
+
+        if (category && question && answerA && answerB && answerC && answerD && correctAnswer && imageUrl && description) {
+            const token = localStorage.getItem('token');
+            quizzService.create({ category, question, answerA, answerB, answerC, answerD, correctAnswer, imageUrl, description, owner: user.email }, token)
+                .then(res => res.json())
+                .then(quizzData => {
+                    onCreateQuizz(quizzData);
+                    // navigate('/catalog');
+                });
+        }
+    }
     return (
         <section id="create-page">
-            <form id="create">
+            <form id="create" onSubmit={onSubmitHandler}>
                 <div className="container">
 
                     <h1>Create Quizz</h1>
-                    <label htmlFor="leg-title">Category:</label>
-                    <input type="text" id="title" name="title" />
+                    <div>
+                        <label htmlFor="category">Category:</label>
+                        <input className={styles.inputHoverColor} type="text" name="category" />
 
-                    <label htmlFor="category">Question:</label>
-                    <input type="text" name="category" />
+                        <label htmlFor="imageUrl">Image Url:</label>
+                        <input className={styles.inputHoverColor} type="text" name="imageUrl" />
+                        <label htmlFor="level">Level:</label>
+                        <input className={styles.inputHoverColor} type="text" name="level" />
+                    </div>
+                    <div>
+                        <label htmlFor="question">Question:</label>
+                        <input className={styles.inputHoverColor} type="text" name="question" />
 
-                    <label htmlFor="answer-a">Answer A:</label>
-                    <input type="number" name="answer-a" min="1" />
+                        <label htmlFor="description">Description:</label>
+                        <textarea name="description"></textarea>
+                    </div>
+                    <div>
+                        <label htmlFor="answer-a">Answer A:</label>
+                        <input className={styles.inputHoverColor} type="text" name="answer-a" min="1" />
+                        <label htmlFor="answer-b">Answer B:</label>
+                        <input className={styles.inputHoverColor} type="text" name="answer-b" min="1" />
+                    </div>
+                    <div>
 
-                    <label htmlFor="answer-b">Answer B:</label>
-                    <input type="number" name="answer-b" min="1" />
-
-                    <label htmlFor="answer-c">Answer C:</label>
-                    <input type="number" name="answer-c" min="1" />
-
-                    <label htmlFor="answer-d">Answer D:</label>
-                    <input type="number" name="answer-d" min="1" />
-
+                        <label htmlFor="answer-c">Answer C:</label>
+                        <input className={styles.inputHoverColor} type="text" name="answer-c" min="1" />
+                        <label htmlFor="answer-d">Answer D:</label>
+                        <input className={styles.inputHoverColor} type="text" name="answer-d" min="1" />
+                    </div>
                     <label htmlFor="correct-answer">Correct Answer:</label>
-                    <input type="number" name="correct-answer" min="1" />
-
-                    <label htmlFor="imageUrl">Image:</label>
-                    <input type="text" id="imageUrl" name="imageUrl" />
-
-                    <label htmlFor="description">Description:</label>
-                    <textarea name="description" id="description"></textarea>
-                    <input className="btn submit" type="submit" value="Edit Quizz" />
-
+                    <input className={styles.inputHoverColor} type="text" name="correct-answer" min="1" />
+                    <div>
+                        <input className="btn submit" type="submit" value="Create Quizz" />
+                    </div>
                 </div>
             </form>
         </section>

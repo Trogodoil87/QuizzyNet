@@ -11,6 +11,7 @@ export const Logout = () => {
     useEffect(() => {
         authService.logout(user.accessToken)
             .then(() => {
+                localStorage.clear();
                 userLogout();
                 navigate('/');
             })

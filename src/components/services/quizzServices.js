@@ -9,12 +9,13 @@ export const getAll = async () => {
     }
 }
 
-export const create = async (quizzData) => {
+export const create = async (quizzData, token) => {
     try {
         const response = await fetch(baseUrl, {
             method: 'POST',
             headers: {
-                'content-type': 'application/json'
+                'content-type': 'application/json',
+                'X-Authorization': token
             },
             body: JSON.stringify(quizzData),
         });
@@ -50,10 +51,13 @@ export const edit = async (quizzId, quizzData) => {
     }
 }
 
-export const remove = async (quizzId) => {
+export const remove = async (quizzId, userToken) => {
     try {
         const response = await fetch(`${baseUrl}/${quizzId}`, {
             method: 'DELETE',
+            headers: {
+                'X-Authorization': userToken
+            }
         });
 
         return response;

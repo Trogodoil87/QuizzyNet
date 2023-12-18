@@ -15,6 +15,7 @@ import { Create } from "./components/Create/Create";
 import { Edit } from "./components/Edit/Edit";
 import { Home } from "./components/Home/Home";
 import { Logout } from "./components/Logout/Logout";
+import { Delete } from "./components/Delete/Delete";
 
 function App() {
     const [quizzes, setQuizzes] = useState([]);
@@ -25,12 +26,11 @@ function App() {
             .then(res => res.json())
             .then(result => {
                 setQuizzes(result);
+                console.log(result);
             })
-        console.log(user)
     }, []);
 
     const userLogin = (userData) => {
-        console.log(userData);
         localStorage.setItem('token', userData.accessToken);
         setUser(userData);
     }
@@ -38,9 +38,22 @@ function App() {
     const userLogout = () => {
         setUser({});
     }
-    
+
+    const createQuizz = (quizz) => {
+        console.log(quizz);
+        setQuizzes(quizz);
+    }
+
+    const onCatalogRefresh = (newQuizzes) => {
+        setQuizzes(newQuizzes);
+    }
+
+    const onDeleteHandler = (e, quizz) => {
+        console.log(quizz);
+    }
+
     return (
-        <QuizzContext.Provider value={{ quizzes, userLogout, user }}>
+        <QuizzContext.Provider value={{ quizzes, userLogout, user, onCatalogRefresh, onDeleteHandler }}>
             <Header user={user} />
             <Routes>
                 <Route path='/' element={<Home />} />
@@ -48,9 +61,9 @@ function App() {
                 <Route path='/catalog' element={<Catalog />} />
                 <Route path='/login' element={<Login userLogin={userLogin} />} />
                 <Route path='/register' element={<Register />} />
-                <Route path='/create' element={<Create />} />
-                <Route path='/edit/:quizId' element={<Edit />} />
-                <Route path='/edit/:quizId' element={<Edit />} />
+                <Route path='/create' element={<Create onCreateQuizz={createQuizz} />} />
+                <Route path='/edit/:quizzId' element={<Edit />} />
+                <Route path='/delete/:quizzId' element={<Delete />} />
                 <Route path='/about' element={<AboutUs />} />
                 <Route path='/logout' element={<Logout />} />
             </Routes >
