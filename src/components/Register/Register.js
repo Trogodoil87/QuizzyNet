@@ -4,7 +4,9 @@ import { useState } from "react";
 import styles from "./Register.module.css"
 import * as authService from "../services/authService";
 
-export const Register = () => {
+export const Register = ({
+    userLogin,
+}) => {
     const navigate = useNavigate();
     const [onErr, setOnErr] = useState(false);
 
@@ -26,7 +28,8 @@ export const Register = () => {
         authService.register(email, password)
             .then(res => res.json())
             .then(authData => {
-                console.log(authData);
+                userLogin(authData);
+                navigate('/');
             })
 
     }

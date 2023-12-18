@@ -16,6 +16,7 @@ import { Edit } from "./components/Edit/Edit";
 import { Home } from "./components/Home/Home";
 import { Logout } from "./components/Logout/Logout";
 import { Delete } from "./components/Delete/Delete";
+import { Details } from "./components/Details/Details";
 
 function App() {
     const [quizzes, setQuizzes] = useState([]);
@@ -25,8 +26,11 @@ function App() {
         quizzService.getAll()
             .then(res => res.json())
             .then(result => {
-                setQuizzes(result);
-                console.log(result);
+                if (result.status) {
+                    setQuizzes([]);
+                } else {
+                    setQuizzes(result);
+                }
             })
     }, []);
 
@@ -39,30 +43,34 @@ function App() {
         setUser({});
     }
 
-    const createQuizz = (quizz) => {
-        console.log(quizz);
-        setQuizzes(quizz);
+    const createQuizz = (quizzData) => {
+        console.log(quizzes);
+        setQuizzes(state => [
+            ...state,
+            {
+                ...quizzData,
+                owner: quizzData._ownerId
+            }
+        ]);
     }
 
     const onCatalogRefresh = (newQuizzes) => {
         setQuizzes(newQuizzes);
     }
 
-    const onDeleteHandler = (e, quizz) => {
-        console.log(quizz);
-    }
 
     return (
-        <QuizzContext.Provider value={{ quizzes, userLogout, user, onCatalogRefresh, onDeleteHandler }}>
+        <QuizzContext.Provider value={{ quizzes, userLogout, user, onCatalogRefresh }}>
             <Header user={user} />
             <Routes>
                 <Route path='/' element={<Home />} />
                 <Route path='/search' element={<Search />} />
                 <Route path='/catalog' element={<Catalog />} />
                 <Route path='/login' element={<Login userLogin={userLogin} />} />
-                <Route path='/register' element={<Register />} />
-                <Route path='/create' element={<Create onCreateQuizz={createQuizz} />} />
-                <Route path='/edit/:quizzId' element={<Edit />} />
+                <Route path='/register' element={<Register userLogin={userLogin}/>} />
+                <Route path='/create' element={<Create createQuizz={createQuizz} />} />
+                <Route path='/edit/:quizzId' element={<Edit editQuizz={createQuizz}/>} />
+                <Route path='/details/:quizzId' element={<Details user={user}/>} />
                 <Route path='/delete/:quizzId' element={<Delete />} />
                 <Route path='/about' element={<AboutUs />} />
                 <Route path='/logout' element={<Logout />} />

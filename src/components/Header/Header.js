@@ -18,6 +18,9 @@ export const Header = ({
                     </div>
                 </ul>
                 <div>
+                    <p>{user.email}</p>
+                </div>
+                <div>
                     <ul className={styles.nonBullet}>
                         <li className={styles.navLi}>
                             <Link to="/"><span className={styles.linkColour}>home</span></Link>

@@ -7,15 +7,14 @@ import { QuizzContext } from "../context/QuizzContext";
 
 export const Catalog = () => {
     const { onCatalogRefresh, quizzes } = useContext(QuizzContext);
-
     useEffect(() => {
         quizzService.getAll()
             .then(res => res.json())
             .then(result => {
                 onCatalogRefresh(result);
             })
-    }, [quizzes]);
-
+    },[onCatalogRefresh]);
+    
     return (
         <section className={styles['section-catalog']}>
             < div className={styles['section-catalog-container']} >
@@ -24,7 +23,7 @@ export const Catalog = () => {
                     <p>Always up to date with our latest Quizz Test </p>
                 </div>
                 <div className={styles['section-content']}>
-                    {Object.keys(quizzes).length > 0
+                    {quizzes.length > 0
                         ? quizzes.map(quizz => <CatalogItem key={quizz._id} quizz={quizz} />)
                         : <div>
                             <h1>Nobody posted a Quizz yet! </h1>

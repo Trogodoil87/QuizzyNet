@@ -17,6 +17,10 @@ export const Login = ({
         authService.login(email, password)
             .then(res => res.json())
             .then(authData => {
+                if (authData.code === 403) {
+                    return;
+                }
+                console.log(authData);
                 userLogin(authData);
                 navigate('/');
             })

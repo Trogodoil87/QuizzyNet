@@ -16,7 +16,7 @@ export const CatalogItem = ({
         } else {
             setIsOwner(false);
         }
-    }, []);
+    }, [user._id, quizz._ownerId]);
 
 
     return (
@@ -36,7 +36,7 @@ export const CatalogItem = ({
                         </>
                     }
                 </h4>
-                <h5>posted <span>by</span> <Link to={`/profile/${quizz._id}`}><span className={styles.catalogItemTxt}>{quizz.owner}</span></Link><div>Level:</div>{quizz.level}</h5>
+                <h5>posted <span>by</span> <Link to={`/profile/${quizz._id}`}><span className={styles.catalogItemTxt}>{quizz.owner}</span></Link><div>Level: {quizz.level}</div></h5>
                 <p >
                     {quizz.description}
                 </p>

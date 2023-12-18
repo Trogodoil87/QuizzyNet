@@ -35,12 +35,13 @@ export const getById = async (quizzId) => {
     }
 }
 
-export const edit = async (quizzId, quizzData) => {
+export const edit = async (quizzId, quizzData, token) => {
     try {
         const response = await fetch(`${baseUrl}/${quizzId}`, {
             method: 'PUT',
             headers: {
-                'content-type': 'application/json'
+                'content-type': 'application/json',
+                'X-Authorization': token
             },
             body: JSON.stringify(quizzData),
         });

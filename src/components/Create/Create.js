@@ -6,7 +6,7 @@ import { QuizzContext } from "../context/QuizzContext";
 import * as quizzService from "../services/quizzServices";
 
 export const Create = ({
-    onCreateQuizz,
+    createQuizz,
 }) => {
     const { user } = useContext(QuizzContext);
     const navigate = useNavigate();
@@ -16,6 +16,7 @@ export const Create = ({
         const formData = new FormData(e.target);
 
         const category = formData.get('category');
+        const level = formData.get('level');
         const question = formData.get('question');
         const answerA = formData.get('answer-a');
         const answerB = formData.get('answer-b');
@@ -25,13 +26,13 @@ export const Create = ({
         const imageUrl = formData.get('imageUrl');
         const description = formData.get('description');
 
-        if (category && question && answerA && answerB && answerC && answerD && correctAnswer && imageUrl && description) {
+        if (category && question && answerA && answerB && answerC && answerD && correctAnswer && imageUrl && description && level) {
             const token = localStorage.getItem('token');
-            quizzService.create({ category, question, answerA, answerB, answerC, answerD, correctAnswer, imageUrl, description, owner: user.email }, token)
+            quizzService.create({ category, level, question, answerA, answerB, answerC, answerD, correctAnswer, imageUrl, description, owner: user.email }, token)
                 .then(res => res.json())
                 .then(quizzData => {
-                    onCreateQuizz(quizzData);
-                    // navigate('/catalog');
+                    createQuizz(quizzData);
+                    navigate('/catalog');
                 });
         }
     }
