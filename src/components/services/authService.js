@@ -34,3 +34,14 @@ export const logout = async (token) => {
 
     return response;
 }
+
+export const myProfile = async (token) => {
+    const response = await fetch(`${baseUrl}/me`, {
+        method: 'GET',
+        headers: {
+            'X-Authorization': token
+        }
+    });
+
+    return response;
+}

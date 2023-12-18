@@ -26,6 +26,7 @@ export const Create = ({
         const imageUrl = formData.get('imageUrl');
         const description = formData.get('description');
 
+
         if (category && question && answerA && answerB && answerC && answerD && correctAnswer && imageUrl && description && level) {
             const token = localStorage.getItem('token');
             quizzService.create({ category, level, question, answerA, answerB, answerC, answerD, correctAnswer, imageUrl, description, owner: user.email }, token)
@@ -35,7 +36,9 @@ export const Create = ({
                     navigate('/catalog');
                 });
         }
-    }
+    };
+
+
     return (
         <section id="create-page">
             <form id="create" onSubmit={onSubmitHandler}>
@@ -74,7 +77,7 @@ export const Create = ({
                     <label htmlFor="correct-answer">Correct Answer:</label>
                     <input className={styles.inputHoverColor} type="text" name="correct-answer" min="1" />
                     <div>
-                        <input className="btn submit" type="submit" value="Create Quizz" />
+                        <input className={styles.createButtonEffect} type="submit" value="Create Quizz" />
                     </div>
                 </div>
             </form>

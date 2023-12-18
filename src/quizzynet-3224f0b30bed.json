@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "quizzynet",
+  "private_key_id": "3224f0b30bedf44ae2cf27e639f54f701b173e2d",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQCwAoogbVAXMYyH\nVpLX+FF9W+trpKaFpJ9vF6mmeAY+deqbJP0aqee7bVngpVVHC/iscofUhvRElblx\ntdkByfZbWznIuUkS3Q+7Er9MN5N+IfU/BJiBgDtdegKuKBXFscfuF8DlR2Az0Tb+\ntE5EZMiLEo2NBoNRrg/qD7bJHpjlafjACzZYzm3Pt89JJzn6PbI5H79pNlK0V1OW\ncIXt7j5WGSZkIUi1YbWv7zvAwTjQ1WGcPmlWKdQHoZeJEpHRRyihhjkzL+S9PA7Z\nRGF+aw6wTRTcGLgymqAk7m4iVCFvdbzk/hTuXg/M1XpGe5a9ordQHvSOsiUExegT\nozA/q8/DAgMBAAECggEAAtvOGbMgAK07Vqj45ZN3SPPvO0y6fHBgboUR3YEUvBSQ\nmBVEgkrA8SUlHb+4Ez+5U2oT+3p3PFq6K+o2+UJ23KQuQhMdG4NS0a6YqmI7F2qL\nX/FxKj+s6lqK8WbEdvUcn1wfZxnlRBiUlHpuzJZec3PJSY5FH7riya7LpzFdOYyb\nug7VJi/JJRM7JdVl1fvIM7lyLzIuQp/9gj2ID7rcN+assdxL4XkVND6jNE6ock88\n1f+Z6j4QFnLCqziPCgPBl6lTslDXmLxx5tIDURfxNZ/6q6RPSiFQVe+6V1eFC0cF\nbHiJftyvE6X/dW1nChi8ZwigaeLW7gsEGqH88XMhQQKBgQDsJAPyTO7f47FsBBdm\nRZObU2CJFg3OTTOdRGauVti0rxTZLoVEmlKCIBaM4sTuq15kWR4rnZPD4UfHyuUL\nDXZEZK2Z8xobOPa4ZYUUa0XsbtTEP/OU5lNmTV/ExxTUZTeypzaBlg5SvcZszN/l\nsHX3Wbmvwktp9Kd4gjpkdWIx0QKBgQC+z/DAlBD4ylv0w3B+5+/jpJrebpW+aa1A\nm2J4VUBD0Tpq53IJc9EVOhH2BgonePMzzSudMYU+fl3Gm6JBjV2KbTVTPRHEhO8t\ndA5xwEyBN6jsXCAzKX/f4PhSzcOV3hGeCYzNgDFy5sd/tjPGVj98Ytvs78qu69zi\nneTPMkRZUwKBgQDnmNsWBUYy54nXOpwIfiyqpjeDu9GGiEka8T8TtbGMZDq6Vtn1\n0rUhUn9LZg1nV0OYf58Lf9ywvH4+AUxqbqWTpnptBvSPxmqTp13CDQPjQ0ABygcH\n/m3FZBWNVQOk3DCoUz8uERGzLNUzWCwvhcXs9l8bdh+op36ovnCunkHUQQKBgQCb\nEsfo2u0IJP2i6IsuuDTf31D14Q3V2HCzhxT6Et7NvucpJrwpLnUIOU+LkNEDz2pn\n+SCu+iX96hkwZh/yAn+5FpQ19/XOrvLrD90FWXFTuvaQUTbiHaINQvrN4OhJjlbn\nB3/lK4AEj8Ym5t8hG8swve9amm8wxgOYMRZZxdKCfQKBgGGjIj2nv9W4o30877zx\nkYOf9sQsgQB+/5E8bo4EKIl0rBj41pXllcUJ8SBMtBUaL1lyb0X+PX+++9TOsE4l\ntzsVEb9TEXbHm6Z1HJbzhcVbQ1mW4PmIdNUUaPvNbwDKIn27zPhFLtqS6lRM4SJ0\n/3nhtW8vP8MUh3yslp1DW0KK\n-----END PRIVATE KEY-----\n",
+  "client_email": "quizzynetservice@quizzynet.iam.gserviceaccount.com",
+  "client_id": "116192860543127805875",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/quizzynetservice%40quizzynet.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}

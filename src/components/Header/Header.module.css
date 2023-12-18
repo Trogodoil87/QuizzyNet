@@ -13,8 +13,36 @@
 
 .navLi {
     margin: 10px 20px;
+
+    font-size: 1rem;
+    border: none;
+    outline: none;
+    padding: 10px 12px;
+    background-color: white;
+    color: rgba(105, 53, 4, 0.815);
+}
+
+.headerButtonStyle {
+
+    font-size: 1rem;
+    border: none;
+    outline: none;
+    padding: 10px 12px;
+    background-color: white;
+    color: rgba(105, 53, 4, 0.815);
+    cursor: pointer;
+}
+
+.headerButtonStyle:hover {
+    color: red;
 }
 
 .linkColour:hover {
     color: red;
+}
+
+.profile {
+    font-size: 1rem;
+    color: black;
+    font-style: bold;
 }

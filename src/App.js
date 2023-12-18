@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 
 import * as quizzService from "./components/services/quizzServices";
 import { QuizzContext } from "./components/context/QuizzContext";
+import styles from "./App.module.css";
 
 import { Catalog } from "./components/Catalog/Catalog";
 import { Footer } from "./components/Footer/Footer";
@@ -17,6 +18,7 @@ import { Home } from "./components/Home/Home";
 import { Logout } from "./components/Logout/Logout";
 import { Delete } from "./components/Delete/Delete";
 import { Details } from "./components/Details/Details";
+import { User } from "./components/User/User";
 
 function App() {
     const [quizzes, setQuizzes] = useState([]);
@@ -54,30 +56,39 @@ function App() {
         ]);
     }
 
+    const editQuizz = (quizzData) => {
+        setQuizzes((oldState) => {
+            let state = oldState.filter(x => x._id !== quizzData._id);
+            return [...state, { ...quizzData, owner: quizzData._ownerId }];
+        });
+    }
+
     const onCatalogRefresh = (newQuizzes) => {
         setQuizzes(newQuizzes);
     }
 
 
     return (
-        <QuizzContext.Provider value={{ quizzes, userLogout, user, onCatalogRefresh }}>
-            <Header user={user} />
-            <Routes>
-                <Route path='/' element={<Home />} />
-                <Route path='/search' element={<Search />} />
-                <Route path='/catalog' element={<Catalog />} />
-                <Route path='/login' element={<Login userLogin={userLogin} />} />
-                <Route path='/register' element={<Register userLogin={userLogin}/>} />
-                <Route path='/create' element={<Create createQuizz={createQuizz} />} />
-                <Route path='/edit/:quizzId' element={<Edit editQuizz={createQuizz}/>} />
-                <Route path='/details/:quizzId' element={<Details user={user}/>} />
-                <Route path='/delete/:quizzId' element={<Delete />} />
-                <Route path='/about' element={<AboutUs />} />
-                <Route path='/logout' element={<Logout />} />
-            </Routes >
-            <Footer user={user} />
-        </QuizzContext.Provider>
-
+        <div className={styles.globalIMG}>
+            <QuizzContext.Provider value={{ quizzes, userLogout, user, onCatalogRefresh }}>
+                <Header user={user} />
+                <Routes>
+                    <Route path='/' element={<Home />} />
+                    <Route path='/search' element={<Search />} />
+                    <Route path='/catalog' element={<Catalog />} />
+                    <Route path='/login' element={<Login userLogin={userLogin} />} />
+                    <Route path='/register' element={<Register userLogin={userLogin} />} />
+                    <Route path='/create' element={<Create createQuizz={createQuizz} />} />
+                    <Route path='/edit/:quizzId' element={<Edit editQuizz={editQuizz} />} />
+                    <Route path='/details/:quizzId' element={<Details user={user} />} />
+                    <Route path='/me/:userId' element={<User user={user} />} />
+                    <Route path='/delete/:quizzId' element={<Delete />} />
+                    <Route path='/about' element={<AboutUs />} />
+                    <Route path='/logout' element={<Logout />} />
+                </Routes >
+                <Footer user={user} />
+            </QuizzContext.Provider>
+        </div>
     );
 }
 

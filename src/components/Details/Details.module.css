@@ -1,0 +1,13 @@
+.detailsButtonEffect {
+    font-size: 1rem;
+    border: none;
+    outline: none;
+    padding: 10px 12px;
+    border-radius: 10px;
+    text-decoration: none;
+}
+
+.detailsButtonEffect:hover {
+    background-color: red;
+    color: white;
+}

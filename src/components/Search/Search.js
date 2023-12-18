@@ -17,7 +17,7 @@ export const Search = () => {
                         <div >
                             <span>
                                 <input type="text" placeholder="EX: HTML, Java, Css" />
-                                <button>
+                                <button className={styles.searchButtonEffect}>
                                     search
                                 </button>
                             </span>

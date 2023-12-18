@@ -31,7 +31,8 @@ export const Login = ({
                 <div className="container">
                     <h1>Login</h1>
                     <label htmlFor="email">Email:</label>
-                    <input type="email" id="email" name="email" placeholder="Sokka@gmail.com" />
+                    <input  type="email" id="email" name="email" placeholder="Sokka@gmail.com" />
+                    {/* to do set input email to autoComplete="off" */}
                     <label htmlFor="login-pass">Password:</label>
                     <input type="password" id="login-password" name="password" />
                     <input type="submit" className="btn submit" value="Login" />

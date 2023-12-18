@@ -1,7 +1,8 @@
-import { useNavigate, useParams, Link } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 
 import * as quizzService from "../services/quizzServices";
+import styles from "./Details.module.css";
 
 export const Details = ({
     user,
@@ -31,6 +32,13 @@ export const Details = ({
     const onClickButtonBackHandler = () => {
         navigate('/catalog')
     }
+
+    const onEditClickHandler = () => {
+        navigate(`/edit/${quizzId}`)
+    }
+    const onDeleteClickHandler = () => {
+        navigate(`/delete/${quizzId}`)
+    }
     return (
         <section id="details-page">
             <h1>{quizz.category}</h1>
@@ -40,14 +48,14 @@ export const Details = ({
                     <img src={quizz.imageUrl} alt="some img" />
                     <span className="detail-description">{quizz.description}</span>
                 </div>
-                <div className="buttons">
+                <div className="button-section">
                     {isOwner &&
                         <>
-                            <Link to={`/edit/${quizzId}`} className="button">Edit</Link>
-                            <Link to={`/delete/${quizzId}`} className="button">Delete</Link>
+                            <button onClick={onEditClickHandler} className={styles.detailsButtonEffect}><span >Edit</span></button>
+                            <button onClick={onDeleteClickHandler} className={styles.detailsButtonEffect}><span >Delete</span></button>
                         </>
                     }
-                    <button onClick={onClickButtonBackHandler}>Back to catalog</button>
+                    <button className={styles.detailsButtonEffect} onClick={onClickButtonBackHandler}>Back to catalog</button>
                 </div>
             </div>
 
@@ -55,8 +63,7 @@ export const Details = ({
                 <label>Likes: 0</label>
                 {user._id &&
                     <>
-                        <input className="btn like" type="button" value="Like" />
-                        <input className="btn dislike" type="button" value="Dislike" />
+                        <input className={styles.detailsButtonEffect} type="button" value="Like" />
                     </>
                 }
             </article>

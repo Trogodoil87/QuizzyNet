@@ -13,8 +13,8 @@ export const Catalog = () => {
             .then(result => {
                 onCatalogRefresh(result);
             })
-    },[onCatalogRefresh]);
-    
+    }, [onCatalogRefresh]);
+
     return (
         <section className={styles['section-catalog']}>
             < div className={styles['section-catalog-container']} >
