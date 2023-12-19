@@ -55,9 +55,10 @@ export const Header = ({
                         <li className={styles.navLi}>
                             <Link to="/about"><span className={styles.linkColour}>about us</span></Link>
                         </li>
-                        <button className={styles.headerButtonStyle} onClick={onMyAccoutClickHandler}><span>my account</span></button>
                         {Object.values(user).length > 0 ?
                             <>
+                                <button className={styles.headerButtonStyle} onClick={onMyAccoutClickHandler}><span>my account</span></button>
+
                                 <li className={styles.navLi}>
                                     <Link to="/create"><span className={styles.linkColour}>create</span></Link>
                                 </li>

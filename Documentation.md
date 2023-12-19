@@ -6,7 +6,7 @@ React project for SoftUni course - React December 2023
 ----------------------
 
 Структура на проекта:
- - клиентската част, изпълнена с React, се намира: QuizzyNet/client/
+ - клиентската част, изпълнена с React, се намира: QuizzyNet
  - сървърна част, изпълнена като Rest API, се намира: QuizzyNet/server/
  
   

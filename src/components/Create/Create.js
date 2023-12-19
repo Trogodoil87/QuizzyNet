@@ -1,10 +1,9 @@
-import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
 
 import styles from "./Create.module.css"
 import { QuizzContext } from "../context/QuizzContext";
 import * as quizzService from "../services/quizzServices";
-import * as likesService from "../services/likeServices";
+// import * as likesService from "../services/likeServices";
 
 export const Create = ({
     createQuizz,
@@ -27,11 +26,10 @@ export const Create = ({
             quizzService.create({ category, level, imageUrl, description, owner: user.email }, token)
                 .then(res => res.json())
                 .then(quizzData => {
-                    likesService.create(quizzData._id, token)
-                    .then(res => res.json())
-                    .then(result => {
-                        console.log(result)
-                    });
+                    // likesService.create(quizzData._id, token)
+                    // .then(res => res.json())
+                    // .then(result => {
+                    // });
                     createQuizz(quizzData);
                 });
         }

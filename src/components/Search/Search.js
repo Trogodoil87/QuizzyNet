@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import styles from "./Search.module.css";
 import { CatalogItem } from "../Catalog/CatalogItem/CatalogItem";
 
