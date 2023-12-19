@@ -7,8 +7,6 @@ import styles from "./Details.module.css";
 
 export const Details = ({
     user,
-    isMainActive,
-    isMainActiveHandler,
 }) => {
     const [quizz, setQuizz] = useState({});
     const [isOwner, setIsOwner] = useState(false);
@@ -62,12 +60,20 @@ export const Details = ({
 
     return (
         <section className={styles.section}>
-            <div className={`popup-info ${isMainActive ? 'active' : ''}`}>
+            <div className="popup-info">
                 <h2>{quizz.category}</h2>
-                {/* <img className="" src={quizz.imageUrl}/> */}
-                <span className="info">{quizz.description}</span>
-                <span className="info">{quizz.level}</span>
-                <span className="info">Likes: 0</span>
+                <div>
+                    <img className="popup-img" src={quizz.imageUrl} alt="QuizzyNet"/>
+                </div>
+                <div>
+                    <span className="info">{quizz.description}</span>
+                </div>
+                <div>
+                    <span className="info">{quizz.level}</span>
+                </div>
+                <div>
+                    <span className="info">Likes: 0</span>
+                </div>
                 <div className="btn-group">
                     {isOwner &&
                         <>

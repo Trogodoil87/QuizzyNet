@@ -21,7 +21,6 @@ export const Login = ({
                 if (authData.code === 403) {
                     return;
                 }
-                console.log(authData);
                 userLogin(authData);
                 navigate('/');
             })

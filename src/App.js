@@ -20,6 +20,7 @@ import { Delete } from "./components/Delete/Delete";
 import { Details } from "./components/Details/Details";
 import { User } from "./components/User/User";
 import { Like } from "./components/Like/Like";
+import { NotFound } from "./components/404/404";
 
 function App() {
     const [quizzes, setQuizzes] = useState([]);
@@ -49,7 +50,6 @@ function App() {
     }
 
     const createQuizz = (quizzData) => {
-        console.log(quizzes);
         setQuizzes(state => [
             ...state,
             {
@@ -90,6 +90,7 @@ function App() {
                     <Route path='/about' element={<AboutUs />} />
                     <Route path='/like/:quizzId' element={<Like />} />
                     <Route path='/logout' element={<Logout />} />
+                    <Route path='/*' element={<NotFound />} />
                 </Routes >
                 <Footer user={user} />
             </QuizzContext.Provider>

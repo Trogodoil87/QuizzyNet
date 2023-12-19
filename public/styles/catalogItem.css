@@ -1,0 +1,49 @@
+.catalog-img {
+    width: 200px;
+    height: 200px;
+    max-width: 200px;
+    max-height: 200px;
+    right: 100px;
+}
+
+
+.catalog-info .info {
+    display: inline;
+    font-size: 16px;
+    max-width: 200px;
+    max-height: 200px;
+}
+
+.catalog-info .btn-group .details-btn {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 130px;
+    height: 45px;
+    background: #c40094;
+    border: 2px solid #c40094;
+    outline: none;
+    border-radius: 6px;
+    text-decoration: none;
+    font-size: 16px;
+    color: #fff;
+    font-weight: 600;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .1);
+    cursor: pointer;
+    transition: .5s;
+}
+
+.catalog-info .btn-group .details-btn:hover {
+    color: #fff;
+    background: #c40094;
+}
+
+.catalog-info .btn-group .details-btn:hover {
+    background-color: #950170;
+    border-color: #950170;
+}
+
+.catalog-info .btn-group .details-btn {
+    background: transparent;
+    color: #c40094;
+}

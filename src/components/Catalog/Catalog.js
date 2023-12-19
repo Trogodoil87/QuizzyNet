@@ -16,7 +16,7 @@ export const Catalog = () => {
                 }
                 onCatalogRefresh(result);
             })
-    }, [quizzes, onCatalogRefresh]);
+    }, []);
 
     return (
         <section className={styles.section}>

@@ -2,6 +2,8 @@
 @import "./register.css";
 @import "./user.css";
 @import "./details.css";
+@import "./catalogItem.css";
+@import "./NotFound.css";
 
 main {
     min-height: 100vh;

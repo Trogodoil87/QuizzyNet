@@ -8,21 +8,21 @@ export const User = () => {
     const [userProfile, setUserProfile] = useState({});
     const navigate = useNavigate();
 
-    // useEffect(() => {
-    //     const authToken = localStorage.getItem('token');
-    //     authService.myProfile(authToken)
-    //         .then(res => res.json())
-    //         .then(userData => {
-    //             setUserProfile(userData);
-    //         })
-    // }, []);
+    useEffect(() => {
+        const authToken = localStorage.getItem('token');
+        authService.myProfile(authToken)
+            .then(res => res.json())
+            .then(userData => {
+                setUserProfile(userData);
+            })
+    }, []);
     const onButtonClickHandler = (e) => {
-        // navigate('/catalog')
+        navigate('/catalog')
     }
     return (
         <section className="user">
             <div className="user-content">
-                <h1>{userProfile._email || "Pesho"}</h1>
+                <h1>{userProfile.email ? userProfile.email : ""}</h1>
                 <h3>QuizzyNet User</h3>
                 <button onClick={onButtonClickHandler} className="btn-profile">Back To Catalog</button>
             </div>
