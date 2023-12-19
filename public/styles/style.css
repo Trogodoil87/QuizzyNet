@@ -1,5 +1,12 @@
 @import "./login.css";
 @import "./register.css";
+@import "./user.css";
+@import "./details.css";
+
+main {
+    min-height: 100vh;
+
+}
 
 footer a {
     text-decoration: none;

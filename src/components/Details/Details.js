@@ -2,15 +2,30 @@ import { useNavigate, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 
 import * as quizzService from "../services/quizzServices";
+import * as likeService from "../services/likeServices";
 import styles from "./Details.module.css";
 
 export const Details = ({
     user,
+    isMainActive,
+    isMainActiveHandler,
 }) => {
-    const { quizzId } = useParams();
-    const [isOwner, setIsOwner] = useState(false);
     const [quizz, setQuizz] = useState({});
+    const [isOwner, setIsOwner] = useState(false);
+    const [likes, setLikes] = useState([]);
+    const { quizzId } = useParams();
+
     const navigate = useNavigate();
+
+    // useEffect(() => {
+    //     likeService.getById(quizzId)
+    //         .then(res => res.json())
+    //         .then(likeData => {
+    //             console.log(likeData)
+    //             setLikes(likeData);
+    //             console.log(likes);
+    //         })
+    // }, []);
 
 
     useEffect(() => {
@@ -18,6 +33,7 @@ export const Details = ({
             .then(res => res.json())
             .then(quizzData => {
                 setQuizz(quizzData);
+
             })
     }, [quizzId]);
 
@@ -34,40 +50,41 @@ export const Details = ({
     }
 
     const onEditClickHandler = () => {
-        navigate(`/edit/${quizzId}`)
+        navigate(`/edit/${quizzId}`);
     }
     const onDeleteClickHandler = () => {
-        navigate(`/delete/${quizzId}`)
+        navigate(`/delete/${quizzId}`);
     }
+    const onLikeClickHandler = () => {
+        navigate(`/like/${quizzId}`);
+    }
+
+
     return (
         <section className={styles.section}>
-            <h1>{quizz.category}</h1>
-            <div className="info-section">
-
-                <div>
-                    <img src={quizz.imageUrl} alt="some img" />
-                    <span className="detail-description">{quizz.description}</span>
-                </div>
-                <div className="button-section">
+            <div className={`popup-info ${isMainActive ? 'active' : ''}`}>
+                <h2>{quizz.category}</h2>
+                {/* <img className="" src={quizz.imageUrl}/> */}
+                <span className="info">{quizz.description}</span>
+                <span className="info">{quizz.level}</span>
+                <span className="info">Likes: 0</span>
+                <div className="btn-group">
                     {isOwner &&
                         <>
-                            <button onClick={onEditClickHandler} className={styles.detailsButtonEffect}><span >Edit</span></button>
-                            <button onClick={onDeleteClickHandler} className={styles.detailsButtonEffect}><span >Delete</span></button>
+                            <button onClick={onEditClickHandler} className="info-btn edit-btn">Edit</button>
+                            <button onClick={onDeleteClickHandler} className="info-btn del-btn">Delete</button>
                         </>
                     }
-                    <button className={styles.detailsButtonEffect} onClick={onClickButtonBackHandler}>Back to catalog</button>
+
+                    <button className="info-btn catalog-btn" onClick={onClickButtonBackHandler}>Back to catalog</button>
+
+                    {user._id && !isOwner && !user.hasLikes &&
+                        <>
+                            <input onClick={onLikeClickHandler} className="info-btn like-btn" type="button" value="Like" />
+                        </>
+                    }
                 </div>
             </div>
-
-            <article className="add-like">
-                <label className={styles.likesStyle}>Likes: 0</label>
-                {user._id &&
-                    <>
-                        <input className={styles.detailsButtonEffect} type="button" value="Like" />
-                    </>
-                }
-            </article>
-
         </section>
     );
 }

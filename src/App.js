@@ -1,4 +1,4 @@
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 
 import * as quizzService from "./components/services/quizzServices";
@@ -19,10 +19,12 @@ import { Logout } from "./components/Logout/Logout";
 import { Delete } from "./components/Delete/Delete";
 import { Details } from "./components/Details/Details";
 import { User } from "./components/User/User";
+import { Like } from "./components/Like/Like";
 
 function App() {
     const [quizzes, setQuizzes] = useState([]);
     const [user, setUser] = useState({});
+    const navigate = useNavigate();
 
     useEffect(() => {
         quizzService.getAll()
@@ -55,6 +57,7 @@ function App() {
                 owner: quizzData._ownerId
             }
         ]);
+        navigate('/catalog');
     }
 
     const editQuizz = (quizzData) => {
@@ -85,6 +88,7 @@ function App() {
                     <Route path='/me/:userId' element={<User user={user} />} />
                     <Route path='/delete/:quizzId' element={<Delete />} />
                     <Route path='/about' element={<AboutUs />} />
+                    <Route path='/like/:quizzId' element={<Like />} />
                     <Route path='/logout' element={<Logout />} />
                 </Routes >
                 <Footer user={user} />

@@ -6,7 +6,7 @@ export const register = async (email, password) => {
         headers: {
             "content-type": 'application/json'
         },
-        body: JSON.stringify({ email, password })
+        body: JSON.stringify({ email, password, hasLikes: false })
     });
 
     return response;

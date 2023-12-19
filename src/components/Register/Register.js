@@ -35,18 +35,18 @@ export const Register = ({
                     <h1>Register</h1>
                     <div className="input-box">
                         <input type="text" placeholder="Email" required name="email" autoComplete="on" />
-                        <i class='bx bxs-user-circle'></i>
+                        <i className='bx bxs-user-circle'></i>
                     </div>
                     <div className="input-box">
                         <input type="password" placeholder="Password" required name="password" autoComplete="on" />
-                        <i class='bx bxs-lock-alt' ></i>
+                        <i className='bx bxs-lock-alt' ></i>
                     </div>
                     <div className="input-box">
                         <input type="password" placeholder="Confirm Password" required name="confirmPassword" autoComplete="on" />
-                        <i class='bx bxs-lock-alt' ></i>
+                        <i className='bx bxs-lock-alt' ></i>
                     </div>
 
-                    <button type="submit" className="btn">Login</button>
+                    <button type="submit" className="btn">Register</button>
                     <div className="register-link">
                         <p>
                             Have account?

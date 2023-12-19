@@ -4,12 +4,13 @@ import { useContext } from "react";
 import styles from "./Create.module.css"
 import { QuizzContext } from "../context/QuizzContext";
 import * as quizzService from "../services/quizzServices";
+import * as likesService from "../services/likeServices";
 
 export const Create = ({
     createQuizz,
 }) => {
     const { user } = useContext(QuizzContext);
-    const navigate = useNavigate();
+
 
     const onSubmitHandler = (e) => {
         e.preventDefault();
@@ -26,8 +27,12 @@ export const Create = ({
             quizzService.create({ category, level, imageUrl, description, owner: user.email }, token)
                 .then(res => res.json())
                 .then(quizzData => {
+                    likesService.create(quizzData._id, token)
+                    .then(res => res.json())
+                    .then(result => {
+                        console.log(result)
+                    });
                     createQuizz(quizzData);
-                    navigate('/catalog');
                 });
         }
     };
@@ -39,20 +44,20 @@ export const Create = ({
                 <form onSubmit={onSubmitHandler}>
                     <h1>Create</h1>
                     <div className="input-box">
-                        <input type="text" placeholder="Category" required name="category" autoComplete="on"/>
-                        <i class='bx bxs-category' ></i>
+                        <input type="text" placeholder="Category" required name="category" autoComplete="on" />
+                        <i className='bx bxs-category' ></i>
                     </div>
                     <div className="input-box">
-                        <input type="text" placeholder="Image Url" required name="imageUrl" autoComplete="on"/>
-                        <i class='bx bxs-image-add' ></i>
+                        <input type="text" placeholder="Image Url" required name="imageUrl" autoComplete="on" />
+                        <i className='bx bxs-image-add' ></i>
                     </div>
                     <div className="input-box">
-                        <input type="text" placeholder="Description" required name="description" autoComplete="on"/>
-                        <i class='bx bx-text' ></i>
+                        <input type="text" placeholder="Description" required name="description" autoComplete="on" />
+                        <i className='bx bx-text' ></i>
                     </div>
                     <div className="input-box">
-                        <input type="text" placeholder="Level" required name="level" autoComplete="on"/>
-                        <i class='bx bxs-hard-hat'></i>
+                        <input type="text" placeholder="Level" required name="level" autoComplete="on" />
+                        <i className='bx bxs-hard-hat'></i>
                     </div>
 
                     <button type="submit" className="btn">Create</button>

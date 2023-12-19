@@ -1,4 +1,4 @@
-const baseUrl = "http://localhost:3030/data/quizz"
+const baseUrl = "http://localhost:3030/data/quizz";
 
 export const getAll = async () => {
     try {
@@ -52,6 +52,22 @@ export const edit = async (quizzId, quizzData, token) => {
     }
 }
 
+export const like = async (quizzId, quizzData, newLikes, token) => {
+    try {
+        const response = await fetch(`${baseUrl}/${quizzId}`, {
+            method: 'PUT',
+            headers: {
+                'content-type': 'application/json',
+                'X-Authorization': token
+            },
+            body: JSON.stringify({ ...quizzData, likes: newLikes }),
+        });
+
+        return response;
+    } catch (error) {
+
+    }
+}
 export const remove = async (quizzId, userToken) => {
     try {
         const response = await fetch(`${baseUrl}/${quizzId}`, {
