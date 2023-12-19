@@ -15,10 +15,12 @@ export const Register = ({
         const password = formData.get("password");
         const confirmPassword = formData.get("confirmPassword");
 
+
         if (password !== confirmPassword) {
             return;
             //to do add alert
         }
+
 
         authService.register(email, password)
             .then(res => res.json())
