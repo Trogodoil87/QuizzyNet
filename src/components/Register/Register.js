@@ -23,6 +23,9 @@ export const Register = ({
         authService.register(email, password)
             .then(res => res.json())
             .then(authData => {
+                if (authData.code === 409) {
+                    return;
+                }
                 userLogin(authData);
                 navigate('/');
             })

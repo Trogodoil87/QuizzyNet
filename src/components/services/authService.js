@@ -1,15 +1,21 @@
 const baseUrl = "http://localhost:3030/users"
 
 export const register = async (email, password) => {
-    const response = await fetch(`${baseUrl}/register`, {
-        method: "POST",
-        headers: {
-            "content-type": 'application/json'
-        },
-        body: JSON.stringify({ email, password, hasLikes: false })
-    });
+    try {
+        const response = await fetch(`${baseUrl}/register`, {
+            method: "POST",
+            headers: {
+                "content-type": 'application/json'
+            },
+            body: JSON.stringify({ email, password, hasLikes: false })
+        });
 
-    return response;
+        return response;
+    } catch (error) {
+        console.log(error);
+        return error;
+    }
+
 }
 
 export const login = async (email, password) => {
