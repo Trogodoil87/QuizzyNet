@@ -22,7 +22,7 @@ export const Catalog = () => {
         <section className={styles.section}>
             < div className={styles['section-catalog-container']} >
                 <div className={styles['section-header']}>
-                    {quizzes.length > 0
+                    {quizzes.onDataError
                         ? <>
                             <h2>Quizzes</h2>
                             <p>Always up to date with our latest Quizz Test </p>
@@ -31,7 +31,7 @@ export const Catalog = () => {
                     }
                 </div>
                 <div className={styles['section']}>
-                    {quizzes.length > 0
+                    {quizzes.onDataError
                         ? quizzes.map(quizz => <CatalogItem key={quizz._id} quizz={quizz} />)
                         : <div>
                             <h1>Nobody posted a Quizz yet! </h1>

@@ -23,18 +23,22 @@ import { Like } from "./components/Like/Like";
 import { NotFound } from "./components/404/404";
 
 function App() {
-    const [quizzes, setQuizzes] = useState([]);
+    const [quizzesData, setQuizzesData] = useState([]);
     const [user, setUser] = useState({});
     const navigate = useNavigate();
 
     useEffect(() => {
         quizzService.getAll()
-            .then(res => res.json())
-            .then(result => {
-                if (result.status) {
-                    setQuizzes([]);
+            .then(res => {
+                if (!res.status === 404) {
+                    return res.json();
+                }
+            })
+            .then(quizzData => {
+                if (quizzData === undefined) {
+                    return setQuizzesData({ onDataError: true });
                 } else {
-                    setQuizzes(result);
+                    return setQuizzesData({ ...quizzData, onDataError: false })
                 }
             })
     }, []);
@@ -50,31 +54,32 @@ function App() {
     }
 
     const createQuizz = (quizzData) => {
-        setQuizzes(state => [
+        setQuizzesData(state => [
             ...state,
             {
                 ...quizzData,
                 owner: quizzData._ownerId
             }
         ]);
+        console.log(quizzData);
         navigate('/catalog');
     }
 
     const editQuizz = (quizzData) => {
-        setQuizzes((oldState) => {
+        setQuizzesData((oldState) => {
             let state = oldState.filter(x => x._id !== quizzData._id);
             return [...state, { ...quizzData, owner: quizzData._ownerId }];
         });
     }
 
     const onCatalogRefresh = (newQuizzes) => {
-        setQuizzes(newQuizzes);
+        setQuizzesData(newQuizzes);
     }
 
 
     return (
         <div className={styles.globalIMG}>
-            <QuizzContext.Provider value={{ quizzes, userLogout, user, onCatalogRefresh }}>
+            <QuizzContext.Provider value={{ quizzes: quizzesData, userLogout, user, onCatalogRefresh }}>
                 <Header user={user} />
                 <Routes>
                     <Route path='/' element={<Home />} />
